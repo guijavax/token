@@ -1,10 +1,8 @@
 package com.api.token.createtoken
 
-import com.api.token.createtoken.config.Constants
+import com.api.token.config.Constants
 import com.api.token.model.User
 import io.jsonwebtoken.Jwts
-import io.jsonwebtoken.security.Keys
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import java.nio.charset.StandardCharsets
@@ -32,7 +30,7 @@ class GenerateTokenImpl : GenerateToken {
                 .setIssuer(Constants.TOKEN_ISSUER)
                 .setAudience(Constants.TOKEN_AUDIENCE)
                 .setSubject(user.username)
-                .setExpiration(Date(System.currentTimeMillis() + 864000000))
+                .setExpiration(Date(System.currentTimeMillis() + 300000))
                 .claim("email", user.email)
                 .compact()
     }

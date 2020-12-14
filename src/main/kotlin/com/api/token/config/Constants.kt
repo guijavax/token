@@ -1,4 +1,4 @@
-package com.api.token.createtoken.config
+package com.api.token.config
 
 import io.jsonwebtoken.SignatureAlgorithm
 

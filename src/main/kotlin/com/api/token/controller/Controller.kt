@@ -1,4 +1,4 @@
-package com.api.token
+package com.api.token.controller
 
 import com.api.token.createtoken.GenerateToken
 import com.api.token.model.User
@@ -19,7 +19,8 @@ class Controller {
     fun createToken(@RequestBody user: User, @RequestHeader("key") key : String) : ResponseEntity<*>{
        return try {
             val configs = mapOf<String,Any>("key" to key, "user" to user)
-            ResponseEntity.ok().body(generateToken.generateToken(configs))
+            val jsonResponse = mapOf<String, String>("token" to generateToken.generateToken(configs))
+            ResponseEntity.ok().body(jsonResponse)
         } catch (e : AuthenticationException) {
             ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.message)
         }
