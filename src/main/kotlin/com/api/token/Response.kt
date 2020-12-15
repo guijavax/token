@@ -7,7 +7,6 @@ sealed class Response(open val responseEntity: ResponseEntity<*>){
     data class ResponseError(override val responseEntity: ResponseEntity<*>) : Response(responseEntity)
 }
 
-class CallResponse(response: Response) {
-    private val response = response
-    fun sendResponse() : ResponseEntity<*> = response.responseEntity
+class CallResponse() {
+    fun sendResponse(response: Response) : ResponseEntity<*> = response.responseEntity
 }
